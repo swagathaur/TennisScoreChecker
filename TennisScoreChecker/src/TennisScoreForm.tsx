@@ -1,17 +1,20 @@
 import React from "react";
+import PlayerScoreForm from "./PlayerScoreForm";
 
 function TennisScoreForm(props) {
     return (
-        <div>
-            <PlayerScoreForm 
-                player={props.playerX}
-                totalSets={props.totalSets}
-                class={props.winner === props.playerX ? 'winnerTable' : 'loserTable'} />
-            <PlayerScoreForm 
-                player={props.playerY}
-                totalSets={props.totalSets}
-                class={props.winner === props.playerY ? 'winnerTable' : 'loserTable'} />
-        </div>
+        <table>
+            <tbody>
+                <PlayerScoreForm
+                    player={props.playerX}
+                    totalSets={props.totalSets}
+                    className={props.winner === props.playerX ? 'winnerTable' : 'loserTable'} />
+                <PlayerScoreForm
+                    player={props.playerY}
+                    totalSets={props.totalSets}
+                    className={props.winner === props.playerY ? 'winnerTable' : 'loserTable'} />
+            </tbody>
+        </table>
     )
 }
 

@@ -15,26 +15,30 @@ describe('<TennisScoreForm />', () => {
         let props = GetDummyData();
 
         beforeEach(async () => {
-            ({getByRole} = render(<TennisScoreForm props/>))
+            ({getByRole} = render
+                (<TennisScoreForm 
+                    playerX={props.playerX} 
+                    playerY={props.playerY}
+                    totalSets={props.totalSets}/>))
         });
 
         it ("Displays both players' matchData", () => {
             //Check correct player names
-            expect(getByRole('playerNameField', {name : props.playerX.name})).toContain(props.playerX.name);
-            expect(getByRole('playerNameField', {name : props.playerY.name})).toContain(props.playerY.name)
+            expect(getByRole('cell', {name : props.playerX.name})).toHaveValue(props.playerX.name);
+            expect(getByRole('cell', {name : props.playerY.name})).toHaveValue(props.playerY.name)
             
             //Check correct game counts, for the correct amount of sets
             for(let x = 0; x < props.totalSets; x++) {                
-                    expect(getByRole('gameRecordField', {name : 'gamesCount', gameSet : x, player : props.playerX.name}))
+                    expect(getByRole('cell', {name : 'gamesCount', key : x, player : props.playerX.name}))
                         .toContain(props.playerX.gameSets[x]);
-                    expect(getByRole('gameRecordField', {name : 'gamesCount', gameSet : x, player : props.playerY.name}))
+                    expect(getByRole('cell', {name : 'gamesCount', key : x, player : props.playerY.name}))
                         .toContain(props.playerY.gameSets[x]);
             }
                 
             //Check correct setcounts
-            expect(getByRole('setRecordField', {name : 'setCount',  player : props.playerX.name}))
+            expect(getByRole('cell', {name : 'setCount',  player : props.playerX.name}))
                         .toContain(props.playerX.sets);
-            expect(getByRole('setRecordField', {name : 'setCount',  player : props.playerY.name}))
+            expect(getByRole('cell', {name : 'setCount',  player : props.playerY.name}))
                         .toContain(props.playerY.sets);
         });
     });
@@ -51,8 +55,8 @@ function GetDummyData(): MatchData {
 
     for (let i = 0; i < 3; i++) {
         //Set random gameCount
-        props.playerX.gameSets[i] = chance.integer({min: 0, max: 6})
-        props.playerY.gameSets[i] = chance.integer({min: 0, max: 6})
+        props.playerX.gameSets[i] = chance.integer({min: 0, max: 5})
+        props.playerY.gameSets[i] = chance.integer({min: 0, max: 5})
 
         //Set higher value to 6 to fake win set, will prefer Y if equal.
         if (props.playerX.gameSets[i] > props.playerY.gameSets[i]) {
