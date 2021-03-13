@@ -2,6 +2,7 @@
     "extends": "../tsconfig.json",
 
     "compilerOptions": {
-        "noEmit": false
+        "noEmit": false,
+        "types": ["cypress", "cypress-file-upload"]
     }
 }
