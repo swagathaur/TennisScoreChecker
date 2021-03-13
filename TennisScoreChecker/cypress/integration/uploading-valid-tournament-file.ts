@@ -24,18 +24,21 @@ describe('Uploading a tennis score file', () => {
             cy.get('[name="matchOutcome0"]').within(() => {
 
                 //Check that table contains the two player strings
-                cy.get('tr').eq(0).get('td').eq(0).contains('Person A');
-                cy.get('tr').eq(1).get('td').eq(0).contains('Person B');
+                cy.get('tr').eq(0).get('td').eq(0).should('not.be.a', 'string');
+                cy.get('tr').eq(1).get('td').eq(0).should('not.be.a', 'string');
                 
                 //Check that each column contains the right game data for that set
-                cy.get('tr').eq(0).get('td').eq(1).contains('6');
-                cy.get('tr').eq(1).get('td').eq(1).contains('0');
+                cy.get('tr').eq(0).get('td').eq(1).should('be.within', 0, 6);
+                cy.get('tr').eq(1).get('td').eq(1).should('be.within', 0, 6);
                 
                 //Check that the table contains the correct sets in the final column
-                cy.get('tr').eq(0).get('td').eq(2).contains('2');
-                cy.get('tr').eq(1).get('td').eq(2).contains('0');
+                cy.get('tr').eq(0).get('td').eq(2).should('be.within', 0, 2);
+                cy.get('tr').eq(1).get('td').eq(2).should('be.within', 0, 2);
 
-                //TODO:: Check that the winner row has the winners styling
+                //TODO:: Check that the players have different stylings ie; one player has winner styling
+                cy.get('tr').eq(0).should('have.class',  () => {
+                    cy.get('tr').eq(1).its('class')
+                });
             });  
         })
     });
