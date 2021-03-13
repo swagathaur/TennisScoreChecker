@@ -5,7 +5,7 @@
     "*/*.ts"
   ],
   "compilerOptions": {
-    "types": ["jest", "node"],
+    "types": ["jest", "node", "cypress", "cypress-file-upload"],
     "target": "es5",
     "lib": [
       "dom",

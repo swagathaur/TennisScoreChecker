@@ -1,8 +1,9 @@
 {
     "extends": "../tsconfig.json",
-
+    "include": ["../node_modules/cypress", "*/*.ts"],
+    "exclude": ["../node_modules/cypress/**/*.js"],
     "compilerOptions": {
-        "noEmit": false,
-        "types": ["cypress", "cypress-file-upload"]
+      "noEmit": false,
+      "isolatedModules": false 
     }
-}
+  }
