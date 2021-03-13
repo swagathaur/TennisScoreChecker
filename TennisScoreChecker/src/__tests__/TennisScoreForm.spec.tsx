@@ -40,7 +40,7 @@ describe('<TennisScoreForm />', () => {
 
 //Create the dummy prop data for the test
 function GetDummyData(): any {
-    let props : any;
+    let props : any ; //TODO :: Create data types
     let chance = new Chance();
 
     //Get random names
@@ -53,7 +53,7 @@ function GetDummyData(): any {
     //Set base set counts
     props.playerX.sets = 0;
     props.playerX.sets = 0;
-            
+
     for (let i = 0; i < props.totalSets; i++) {
         //Set random gameCount
         props.playerX.gameSet[i] = chance.integer({min: 0, max: 6})
