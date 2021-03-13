@@ -1,4 +1,6 @@
-class MatchData {
+import { PlayerData } from "./Player";
+
+export class MatchData {
     constructor( public playerX : PlayerData = null, public playerY : PlayerData = null) {
         this.playerX = playerX;
         this.playerY = playerY;
@@ -6,6 +8,6 @@ class MatchData {
 
     //Returns the amount of played sets for this match
     get totalSets() : number {
-        return this.playerX.gameSets.length;
+        return this.playerX.sets + this.playerY.sets;
     }
 }

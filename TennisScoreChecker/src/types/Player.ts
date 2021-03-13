@@ -1,5 +1,5 @@
-class PlayerData {   
-    constructor( public name: string = '', public gameSets: number[] = null){
+export class PlayerData {   
+    constructor( public name: string = '', public gameSets: number[] = [0,0,0]){
         this.name = name;
         this.gameSets = gameSets;
     }

@@ -3,13 +3,15 @@ import "@testing-library/jest-dom/extend-expect"
 import React from 'react'
 import TennisScoreForm from '../TennisScoreForm'
 import Chance from 'chance'
+import { MatchData } from "../types/MatchData"
+import { PlayerData } from "../types/Player"
 
 const { render } = require("@testing-library/react");
 
 describe('<TennisScoreForm />', () => {
     describe('take match data and display it to a table', () => {
 
-        let getByRole;
+        let getByRole : any;
         let props = GetDummyData();
 
         beforeEach(async () => {
