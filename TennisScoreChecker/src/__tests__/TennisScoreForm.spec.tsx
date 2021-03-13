@@ -17,9 +17,11 @@ describe('<TennisScoreForm />', () => {
         });
 
         it ("Displays both players' matchData", () => {
+            //Check correct player names
             expect(getByRole('playerNameField', {name : props.playerX.firstName})).toContain(props.playerX.firstName);
             expect(getByRole('playerNameField', {name : props.playerY.firstName})).toContain(props.playerY.firstName)
             
+            //Check correct game counts, for the correct amount of sets
             for(let x = 0; x < props.totalSets; x++) {                
                     expect(getByRole('gameRecordField', {name : 'gamesCount', gameSet : x, player : props.playerX.firstName}))
                         .toContain(props.playerX.gameSet[x]);
@@ -27,6 +29,7 @@ describe('<TennisScoreForm />', () => {
                         .toContain(props.playerY.gameSet[x]);
             }
                 
+            //Check correct setcounts
             expect(getByRole('setRecordField', {name : 'setCount',  player : props.playerX.firstName}))
                         .toContain(props.playerX.sets);
             expect(getByRole('setRecordField', {name : 'setCount',  player : props.playerY.firstName}))
@@ -49,7 +52,8 @@ function GetDummyData(): any {
     
     //Set base set counts
     props.playerX.sets = 0;
-    props.playerX.sets = 0;        
+    props.playerX.sets = 0;
+            
     for (let i = 0; i < props.totalSets; i++) {
         //Set random gameCount
         props.playerX.gameSet[i] = chance.integer({min: 0, max: 6})
