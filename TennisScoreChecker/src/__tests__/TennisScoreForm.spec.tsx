@@ -18,55 +18,52 @@ describe('<TennisScoreForm />', () => {
 
         it ("Displays both players' matchData", () => {
             //Check correct player names
-            expect(getByRole('playerNameField', {name : props.playerX.firstName})).toContain(props.playerX.firstName);
-            expect(getByRole('playerNameField', {name : props.playerY.firstName})).toContain(props.playerY.firstName)
+            expect(getByRole('playerNameField', {name : props.playerX.name})).toContain(props.playerX.name);
+            expect(getByRole('playerNameField', {name : props.playerY.name})).toContain(props.playerY.name)
             
             //Check correct game counts, for the correct amount of sets
             for(let x = 0; x < props.totalSets; x++) {                
-                    expect(getByRole('gameRecordField', {name : 'gamesCount', gameSet : x, player : props.playerX.firstName}))
-                        .toContain(props.playerX.gameSet[x]);
-                    expect(getByRole('gameRecordField', {name : 'gamesCount', gameSet : x, player : props.playerY.firstName}))
-                        .toContain(props.playerY.gameSet[x]);
+                    expect(getByRole('gameRecordField', {name : 'gamesCount', gameSet : x, player : props.playerX.name}))
+                        .toContain(props.playerX.gameSets[x]);
+                    expect(getByRole('gameRecordField', {name : 'gamesCount', gameSet : x, player : props.playerY.name}))
+                        .toContain(props.playerY.gameSets[x]);
             }
                 
             //Check correct setcounts
-            expect(getByRole('setRecordField', {name : 'setCount',  player : props.playerX.firstName}))
+            expect(getByRole('setRecordField', {name : 'setCount',  player : props.playerX.name}))
                         .toContain(props.playerX.sets);
-            expect(getByRole('setRecordField', {name : 'setCount',  player : props.playerY.firstName}))
+            expect(getByRole('setRecordField', {name : 'setCount',  player : props.playerY.name}))
                         .toContain(props.playerY.sets);
         });
     });
 });
 
 //Create the dummy prop data for the test
-function GetDummyData(): any {
-    let props : any ; //TODO :: Create data types
+function GetDummyData(): MatchData {
+    let props : MatchData = new MatchData() ; //TODO :: Create data types
     let chance = new Chance();
 
     //Get random names
-    props.playerX = chance.name();
-    props.playerY = chance.name();
+    props.playerX = new PlayerData(chance.name());
+    props.playerY = new PlayerData(chance.name());
 
-    //Get total setCount
-    props.totalSets = chance.integer({min: 2, max: 3})
-    
-    //Set base set counts
-    props.playerX.sets = 0;
-    props.playerX.sets = 0;
-
-    for (let i = 0; i < props.totalSets; i++) {
+    for (let i = 0; i < 3; i++) {
         //Set random gameCount
-        props.playerX.gameSet[i] = chance.integer({min: 0, max: 6})
-        props.playerY.gameSet[i] = chance.integer({min: 0, max: 6})
+        props.playerX.gameSets[i] = chance.integer({min: 0, max: 6})
+        props.playerY.gameSets[i] = chance.integer({min: 0, max: 6})
 
         //Set higher value to 6 to fake win set, will prefer Y if equal.
-        if (props.playerX.gameSet[i] > props.playerY.gameSet[i]) {
-            props.playerX.gameSet[i] = 6;
-            props.playerX.sets++;
+        if (props.playerX.gameSets[i] > props.playerY.gameSets[i]) {
+            props.playerX.gameSets[i] = 6;
         }
         else {
-            props.playerY.gameSet[i] = 6;
-            props.playerY.sets++;
+            props.playerY.gameSets[i] = 6;
         }
+
+        //Break when a player has two sets taken
+        if (props.playerX.sets >=2 || props.playerY.sets >= 2)
+            break;
     }
+
+    return props;
 }
