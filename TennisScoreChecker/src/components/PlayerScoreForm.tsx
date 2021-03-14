@@ -6,22 +6,22 @@ function PlayerScoreForm(props) {
     for (let i = 0; i < props.totalSets; i++) {
         if (props.player.gameSets[i] == 6) {
             gameSet.push(
-                <td key={i} style={{ backgroundColor: "greenyellow" }}>
+                <td key={i} style={{ backgroundColor: "darkseagreen" }}>
                     {props.player.gameSets[i]}
                 </td>)
         }
         else {
             gameSet.push(
-                <td key={i} style={{ backgroundColor: "papayawhip" }}>
+                <td key={i} style={{ backgroundColor: "tan" }}>
                     {props.player.gameSets[i]}
                 </td>)
         }
     }
     let setDisplay;
     if (props.player.sets === 2)
-        setDisplay = <td> {props.player.sets} </td>
+        setDisplay = <td style={{ backgroundColor: "seagreen" }}> {props.player.sets} </td>
     else
-        setDisplay = <td > {props.player.sets} </td>
+        setDisplay = <td style={{ backgroundColor: "sandybrown" }}> {props.player.sets} </td>
 
     return (
         <tr className={props.className} key={props.player.name}>

@@ -6,18 +6,18 @@ function MatchScoreForm(props) {
     let sets = [];
     for (let i = 0; i < props.totalSets; i++)
     {
-        sets.push(<td>Set {i + 1}</td>)
+        sets.push(<th>Set {i + 1}</th>)
     }
 
         return (
             <div>
                 <h1>Match {props.id} </h1>
-                <table className={props.winner === props.playerX ? styles.winnerTable : styles.loserTable} >
+                <table className={styles.steelBlueCols} >
                     <thead>
                         <tr>
-                            <td> Players </td>
+                            <th> Players </th>
                             {sets}
-                            <td>Match</td>
+                            <th>Match</th>
                         </tr>
                     </thead>
                     <tbody>

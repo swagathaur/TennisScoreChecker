@@ -1,63 +1,44 @@
-table.winnerTable {
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  border: 2px solid #A40808;
-  background-color: #BFEEA5;
-  width: 200px;
+table.steelBlueCols {
+  font-family: Arial, Helvetica, sans-serif;
+  border: 4px solid #555555;
+  background-color: #555555;
+  width: 300px;
   text-align: center;
-  border-collapse: collapse;
 }
-table.winnerTable td, table.winnerTable th {
-  border: 1px solid #AAAAAA;
-  padding: 3px 2px;
+table.steelBlueCols td, table.steelBlueCols th {
+  border: 1px solid #555555;
+  padding: 5px 10px;
 }
-table.winnerTable tbody td {
-  font-size: 13px;
+table.steelBlueCols tbody td {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
 }
-table.winnerTable tr:nth-child(even) {
-  background: #F5C8BF;
+table.steelBlueCols thead {
+  background: #398AA4;
+  border-bottom: 10px solid #398AA4;
 }
-table.winnerTable tfoot td {
-  font-size: 13px;
+table.steelBlueCols thead th {
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  border-left: 2px solid #398AA4;
 }
-table.winnerTable tfoot .links {
-  text-align: right;
-}
-table.winnerTable tfoot .links a{
-  display: inline-block;
-  background: #FFFFFF;
-  color: #A40808;
-  padding: 2px 8px;
-  border-radius: 5px;
+table.steelBlueCols thead th:first-child {
+  border-left: none;
 }
 
-table.loserTable {
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  border: 2px solid #A40808;
-  background-color: #F5C8BF;
-  width: 200px;
-  text-align: center;
-  border-collapse: collapse;
-}
-table.loserTable td, table.loserTable th {
-  border: 1px solid #AAAAAA;
-  padding: 3px 2px;
-}
-table.loserTable tbody td {
+table.steelBlueCols tfoot td {
   font-size: 13px;
 }
-table.loserTable tr:nth-child(even) {
-  background: #BFEEA5;
-}
-table.loserTable tfoot td {
-  font-size: 13px;
-}
-table.loserTable tfoot .links {
+table.steelBlueCols tfoot .links {
   text-align: right;
 }
-table.loserTable tfoot .links a{
+table.steelBlueCols tfoot .links a{
   display: inline-block;
   background: #FFFFFF;
-  color: #A40808;
+  color: #398AA4;
   padding: 2px 8px;
   border-radius: 5px;
 }
