@@ -4,14 +4,13 @@ import MatchScoreForm from "../components/MatchScoreForm"
 import { PlayerData } from '../types/Player';
 
 function FileToMatchConverter(props) {
-    let matches: MatchData[];
     let conversionOutcome = ConvertTextfileToMatchdata(props.contents);
 
     if (typeof conversionOutcome == 'string')
         return (<h3>{conversionOutcome}</h3>)
 
-    let formOutput: any[];
-    matches.forEach(element => {
+    let formOutput: any[] = [];
+    conversionOutcome.forEach(element => {
         formOutput.push(<MatchScoreForm playerX={element.playerX}
             playerY={element.playerY}
             winner={element.winner}
@@ -33,14 +32,14 @@ function ConvertTextfileToMatchdata(contents: string) {
     const matchSubStrings = contents.split(/[Mm]atch/);
 
     matchSubStrings.forEach(subString => {
-        if (!IsEmptyOrSpaces(subString))
+        if (!isNullOrWhitespace(subString))
             matchData.push(GetBasicMatchInfo(subString));
     });
 
     if (matchData.length === 0)
         return "No tennis matches were found in this text file.";
-
-    return "Not implemented";
+    
+    return matchData;
 }
 
 //Extracts all individual number groups from a string
@@ -57,8 +56,8 @@ function ExtractNames(source: string) {
 }
 
 //Returns true if a given string is empty of any non-whitespace characters
-function IsEmptyOrSpaces(source: string) {
-    return source === null || source.match(/^ *$/) !== null;
+function isNullOrWhitespace(input) {
+    return !input || !input.trim();
 }
 
 //Returns an empty matchData that has the playernames and ID attached.
@@ -92,9 +91,13 @@ function GetBasicMatchInfo(source: string) {
     let setIterator = 0;
 
     while (lines.length !== 0) {
-        let numbers = ExtractNumbers(lines.shift());
+        let line = lines.shift();
+        if (isNullOrWhitespace(line))
+            continue;
+        let numbers = ExtractNumbers(line);
+
         //Disregard invalid lines (whitespace mostly)
-        if (numbers.length !== 1)
+        if (!numbers) 
             continue;
 
         //Assign point based on pulled number

@@ -6,7 +6,8 @@ import ConvertTextfileToMatchdata from "../components/FileToMatchConverter"
 const { render } = require("@testing-library/react");
 
 describe('ConvertTextfileToMatchdata()', () => {
-    const file = new File([], "full_tournament")
+    const file = 'Match: 01\r\nPerson A vs Person B\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\nMatch: 02\r\nPerson A vs Person C\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n0\r\n0\r\n0\r\n0\r\n\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n0\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n1\r\n'
+
 
     //Display data over multiple matches
     describe('take guaranteed-valid file and display matchdata', () => {
@@ -14,7 +15,7 @@ describe('ConvertTextfileToMatchdata()', () => {
 
 
         beforeEach(async () => {
-            ({ getAllByRole } = render(<FileToMatchConverter fileBlob={file} />))
+            ({ getAllByRole } = render(<FileToMatchConverter contents={file} />))
         })
 
         it("Converts text to match data and displays them,", () => {
