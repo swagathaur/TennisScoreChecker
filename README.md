@@ -11,16 +11,16 @@ It then turns this data into a handy table that shows Player names, games, sets,
 
 ## Quick Start Guide
 To install the projects dependencies, navigate to the <project directory>/TennisScoreChecker and run
-   `npm install`
+   ```npm install```
 
 To view the project, run
-   `yarn start`
+   ```yarn start```
 
 To run the component tests, run 
-   `yarn test`
+   ```yarn test```
 
 To run the end-to-end test, run
-   `yarn cypress open`
+   ```yarn cypress open```
 
 ## Input
 
