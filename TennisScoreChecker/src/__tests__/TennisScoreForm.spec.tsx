@@ -12,7 +12,6 @@ describe('<TennisScoreForm />', () => {
     describe('take match data and display it to a table', () => {
 
         let getAllByRole : any;
-        let getAllByType : any;
         let matchData = GetDummyData();
 
         beforeEach(async () => {
