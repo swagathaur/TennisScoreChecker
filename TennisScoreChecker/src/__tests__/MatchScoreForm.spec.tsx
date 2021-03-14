@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom"
 import "@testing-library/jest-dom/extend-expect"
 import React from 'react'
-import TennisScoreForm from '../TennisScoreForm'
+import MatchScoreForm from '../components/MatchScoreForm'
 import Chance from 'chance'
 import { MatchData } from "../types/MatchData"
 import { PlayerData } from "../types/Player"
@@ -16,7 +16,7 @@ describe('<TennisScoreForm />', () => {
 
         beforeEach(async () => {
             ({getAllByRole} = render
-                (<TennisScoreForm 
+                (<MatchScoreForm 
                     playerX={matchData.playerX} 
                     playerY={matchData.playerY}
                     winner={matchData.winner}
