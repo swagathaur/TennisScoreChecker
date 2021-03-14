@@ -1,15 +1,26 @@
 # Tennis Calculator
 
 The tennis calculator takes a set of scores as inputs and produces useful statistics based on those scores.
-
-This calculator will used a simplified version of scoring where whoever gets to 6 games first wins the set
+This calculator will use a simplified version of scoring where whoever gets to 6 games first wins the set.
 
 ## Overview
 
-The Tennis Calculator takes inputs in the form of a list of points of a tennis match. 
+The Tennis Calculator accepts attached files and reads them as plain text.
+When given inputs in the form of a list of points of a tennis match, the calculator will pull match IDs, name data, and point information.
+It then turns this data into a handy table that shows Player names, games, sets, with colouring to show you who the winner is.
 
-Given this list of points, it will calculate the "games", "sets" and "matches" results.
-It then displays this information in neat little tables, with colouring to show you who the winner is.
+## Quick Start Guide
+To install the projects dependencies, navigate to the <project directory>/TennisScoreChecker and run
+   npm install
+
+To view the project, run
+   yarn start
+
+To run the component tests, run 
+   yarn test
+
+To run the end-to-end test, run
+   yarn cypress open
 
 ## Input
 
