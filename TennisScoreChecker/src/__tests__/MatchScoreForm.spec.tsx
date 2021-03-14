@@ -12,10 +12,11 @@ describe('<TennisScoreForm />', () => {
     describe('take match data and display it to a table', () => {
 
         let getAllByRole : any;
+        let getByRole : any;
         let matchData = GetDummyData();
 
         beforeEach(async () => {
-            ({getAllByRole} = render
+            ({getAllByRole, getByRole} = render
                 (<MatchScoreForm 
                     playerX={matchData.playerX} 
                     playerY={matchData.playerY}
@@ -27,18 +28,6 @@ describe('<TennisScoreForm />', () => {
             //Check that two players were made            
             let rows = getAllByRole('row');
             expect(rows.length).toEqual(2);
-
-            //Check that they have different styling (ie; one is a winner)
-            let winner = 0;
-            let loser = 1;
-            if (matchData.playerY.sets > matchData.playerX.sets)
-            {
-                winner = 1;
-                loser = 0;
-            }
-
-            expect(rows[winner]).toHaveClass('winnerTable');
-            expect(rows[loser]).toHaveClass('loserTable');
         });
     });
 });
