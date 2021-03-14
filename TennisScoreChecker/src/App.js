@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 import ConvertTextfileToMatchdata from './types/ConvertTextfileToMatchdata';
 import TennisScoreForm from './TennisScoreForm'
-import MatchData from './types/MatchData'
 
 class App extends Component {
 
   state = {
     // Initially, no file is selected
     selectedFile: null,
-    selectedFileIsValid: false
   };
 
   //Change state when file selected
@@ -19,18 +17,21 @@ class App extends Component {
   //Content to display after file change
   fileData = () => {
     if (this.state.selectedFile) {
-      const matchData = ConvertTextfileToMatchdata(this.state.selectedFile);
+      const conversionOutput = ConvertTextfileToMatchdata(this.state.selectedFile);
 
       let output;
-      if ((typeof matchData === "string")) {
-        output = <h3>{matchData}</h3>
+      if ((typeof conversionOutput === "string")) {
+        output = <h3>{conversionOutput}</h3>;
       }
-      else if ((matchData.type === MatchData)) {
-        output = <TennisScoreForm playerX={matchData.playerX}
-          playerY={matchData.playerY} 
-          winner={matchData.winner} 
-          totalSets={matchData.totalSets} 
+      else {
+        conversionOutput.forEach(match => {
+          output += <TennisScoreForm playerX={match.playerX}
+            playerY={match.playerY}
+            winner={match.winner}
+            totalSets={match.totalSets}
           />
+        });
+
       }
       return (
         <div>
