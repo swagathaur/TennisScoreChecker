@@ -9,19 +9,16 @@ function FileToMatchConverter(props) {
     if (typeof conversionOutcome == 'string')
         return (<h3>{conversionOutcome}</h3>)
 
-    let formOutput: any[] = [];
-    conversionOutcome.forEach(element => {
-        formOutput.push(<MatchScoreForm playerX={element.playerX}
-            playerY={element.playerY}
-            winner={element.winner}
-            totalSets={element.totalSets}
-        />);
+    const matchList = conversionOutcome.map((matchData) => {
+       return <MatchScoreForm playerX={matchData.playerX}
+            playerY={matchData.playerY}
+            winner={matchData.winner}
+            totalSets={matchData.totalSets}
+            id={matchData.id}
+            key={matchData.id}
+        />;
     });
-    return (
-        <div>
-            {formOutput}
-        </div>
-    )
+    return (<ul> {matchList} </ul>);
 }
 
 export default FileToMatchConverter;
@@ -33,12 +30,16 @@ function ConvertTextfileToMatchdata(contents: string) {
 
     matchSubStrings.forEach(subString => {
         if (!isNullOrWhitespace(subString))
-            matchData.push(GetBasicMatchInfo(subString));
+            try {
+                matchData.push(GetBasicMatchInfo(subString));
+            } catch (error) {
+                return "Recieved error while trying to parse file."
+            }
     });
 
     if (matchData.length === 0)
         return "No tennis matches were found in this text file.";
-    
+
     return matchData;
 }
 
@@ -97,7 +98,7 @@ function GetBasicMatchInfo(source: string) {
         let numbers = ExtractNumbers(line);
 
         //Disregard invalid lines (whitespace mostly)
-        if (!numbers) 
+        if (!numbers)
             continue;
 
         //Assign point based on pulled number

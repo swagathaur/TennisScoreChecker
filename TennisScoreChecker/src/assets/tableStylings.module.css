@@ -1,0 +1,63 @@
+table.winnerTable {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  border: 2px solid #A40808;
+  background-color: #BFEEA5;
+  width: 200px;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.winnerTable td, table.winnerTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.winnerTable tbody td {
+  font-size: 13px;
+}
+table.winnerTable tr:nth-child(even) {
+  background: #F5C8BF;
+}
+table.winnerTable tfoot td {
+  font-size: 13px;
+}
+table.winnerTable tfoot .links {
+  text-align: right;
+}
+table.winnerTable tfoot .links a{
+  display: inline-block;
+  background: #FFFFFF;
+  color: #A40808;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+table.loserTable {
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  border: 2px solid #A40808;
+  background-color: #F5C8BF;
+  width: 200px;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.loserTable td, table.loserTable th {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+table.loserTable tbody td {
+  font-size: 13px;
+}
+table.loserTable tr:nth-child(even) {
+  background: #BFEEA5;
+}
+table.loserTable tfoot td {
+  font-size: 13px;
+}
+table.loserTable tfoot .links {
+  text-align: right;
+}
+table.loserTable tfoot .links a{
+  display: inline-block;
+  background: #FFFFFF;
+  color: #A40808;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
