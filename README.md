@@ -9,8 +9,7 @@ This calculator will used a simplified version of scoring where whoever gets to 
 The Tennis Calculator takes inputs in the form of a list of points of a tennis match. 
 
 Given this list of points, it will calculate the "games", "sets" and "matches" results.
-
-From there it can be queried about various statistics around the input matches it received. 
+It then displays this information in neat little tables, with colouring to show you who the winner is.
 
 ## Input
 
@@ -51,47 +50,6 @@ i.e.
 | 0                    | 40 - 0  |
 | 0                    | Game    |
 
-
-For processing, blank lines must be ignored
-
-## Queries
-
-### Query match result
-Query scores for a particular match
-Prints who defeated whom, and the result of the sets for the match (winning player score first).
-
-Query: `Score Match <id>`
-
-Example: `Score Match 01`
-
-Example output:
-
-    Person A defeated Person B
-    2 sets to 0
- 
-### Query games for player
-Prints a summary of games won vs lost for a particular player over the tournament
-Query: `Games Player <Player Name>`
-
-Example: `Games Player Person A`
-
-Example output:
-
-    23 17
-
-## Sample output
-Running the application against the 'full_tournament.txt' file results in the following:
-
-    $ python tennis_calculator_app.py test/test_data/full_tournament.txt << EOF
-    Score Match 02
-    Games Player Person A
-    EOF
-    
-    Person C defeated Person A
-    2 sets to 1
-    
-    23 17
-    
 
 
 ## Scoring Rules
