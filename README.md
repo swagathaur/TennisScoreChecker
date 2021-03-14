@@ -42,6 +42,7 @@ For example:, the following would result in 2 games to "Person A":
 
     
 The first row is a match id, the second row shows who is playing against whom.
+I assume that these files will always have this same layout, with the ```match``` keyword denoting the seperator between games, and that the second line will always use ``` vs ``` to denote the seperator between player one and player two.
 After that are a series of points, where 0 is a point for the first person listed, 1 is for last person.
 
 i.e.
@@ -55,10 +56,6 @@ i.e.
 | 0                    | 30 - 15 |
 | 1                    | 30 - 30 |
 | 0                    | 40 - 30 |
-| 0                    | Game    |
-| 0                    | 15 - 0  |
-| 0                    | 30 - 0  |
-| 0                    | 40 - 0  |
 | 0                    | Game    |
 
 
