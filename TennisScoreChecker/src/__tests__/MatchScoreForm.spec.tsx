@@ -12,11 +12,10 @@ describe('<TennisScoreForm />', () => {
     describe('take match data and display it to a table', () => {
 
         let getAllByRole : any;
-        let getByRole : any;
         let matchData = GetDummyData();
 
         beforeEach(async () => {
-            ({getAllByRole, getByRole} = render
+            ({getAllByRole} = render
                 (<MatchScoreForm 
                     playerX={matchData.playerX} 
                     playerY={matchData.playerY}
