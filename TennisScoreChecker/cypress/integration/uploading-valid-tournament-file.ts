@@ -11,33 +11,29 @@ describe('Uploading a tennis score file', () => {
         });
 
         //Check the match lists length is 2
-        cy.get('[data-testid=matchList>li').should('have.length', 2);
+        cy.get('[data-testid=matchList] > div').should('have.length', 2);
 
         //Check the results within the matches
         cy.get('[data-testid=matchList').within(() => {
-            
             //NOTE:: Making an assumption that the display will be correct in both cases if its correct in one, as the component tests should be checking the rest.
-            cy.get('[name="matchOutcome0"]').within(() => {
-
+            cy.get('table').eq(0).within(() => {
                 //Check that table contains the two player strings
-                cy.get('tr').eq(0).get('td').eq(0).should('not.be.a', 'string');
-                cy.get('tr').eq(1).get('td').eq(0).should('not.be.a', 'string');
-                
-                //Check that each column contains the right game data for that set
-                cy.get('tr').eq(0).get('td').eq(1).should('be.within', 0, 6);
-                cy.get('tr').eq(1).get('td').eq(1).should('be.within', 0, 6);
-                
-                //Check that the table contains the correct sets in the final column
-                cy.get('tr').eq(0).get('td').eq(2).should('be.within', 0, 2);
-                cy.get('tr').eq(1).get('td').eq(2).should('be.within', 0, 2);
-
-                //TODO:: Check that the players have different stylings ie; one player has winner styling
-                cy.get('tr').eq(0).should('have.class',  () => {
-                    cy.get('tr').eq(1).its('class')
+                cy.get('tr').eq(0).within(() => {
+                    cy.get('td').eq(0).should('contain.text', 'Person A');
+                    cy.get('td').eq(1).should('contain.text', 6);
+                    cy.get('td').eq(2).should('contain.text', 6);
+                    cy.get('td').eq(3).should('contain.text', 2);
                 });
-            });  
+                cy.get('tr').eq(1).within(() => {
+                    cy.get('td').eq(0).should('contain.text', 'Person B');
+                    cy.get('td').eq(1).should('contain.text', 0);
+                    cy.get('td').eq(2).should('contain.text', 0);
+                    cy.get('td').eq(3).should('contain.text', 0);
+                });
+
+            });
         })
     });
 });
 
-export {}
+export { }

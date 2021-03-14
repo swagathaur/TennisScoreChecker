@@ -18,7 +18,7 @@ function FileToMatchConverter(props) {
             key={matchData.id}
         />;
     });
-    return (<ul> {matchList} </ul>);
+    return (<ul data-testid='matchList'> {matchList} </ul>);
 }
 
 export default FileToMatchConverter;
