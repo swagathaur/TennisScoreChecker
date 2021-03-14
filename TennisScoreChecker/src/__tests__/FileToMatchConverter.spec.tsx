@@ -3,7 +3,6 @@ import "@testing-library/jest-dom/extend-expect"
 import React from 'react'
 import FileToMatchConverter from "../components/FileToMatchConverter"
 import ConvertTextfileToMatchdata from "../components/FileToMatchConverter"
-import MatchData from "../types/MatchData"
 const { render } = require("@testing-library/react");
 
 describe('ConvertTextfileToMatchdata()', () => {

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ConvertTextfileToMatchdata from './types/ConvertTextfileToMatchdata';
 import FileToMatchConverter from './components/FileToMatchConverter'
 
 class App extends Component {
