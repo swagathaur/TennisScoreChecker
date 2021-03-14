@@ -1,7 +1,8 @@
 import { PlayerData } from "./Player";
 
 export class MatchData {
-    constructor( public playerX : PlayerData = null, public playerY : PlayerData = null) {
+    constructor(public id : string = '00', public playerX : PlayerData = null, public playerY : PlayerData = null) {
+        this.id = id;
         this.playerX = playerX;
         this.playerY = playerY;
     }

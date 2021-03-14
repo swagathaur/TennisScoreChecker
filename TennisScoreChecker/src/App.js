@@ -2,21 +2,33 @@ import React, { Component } from 'react';
 import FileToMatchConverter from './components/FileToMatchConverter'
 
 class App extends Component {
-
   state = {
     // Initially, no file is selected
     selectedFile: null,
+    hasData: false,
   };
 
   //Change state when file selected
   onFileChange = event => {
-    this.setState({ selectedFile: event.target.files[0] });
+    this.setState({ selectedFile: event.target.files[0], hasData: null });
   };
 
   //Content to display after file change
   fileData = () => {
     if (this.state.selectedFile) {
-      return <FileToMatchConverter blob={this.state.selectedFile}/>
+      let reader = new FileReader();
+      reader.readAsText(this.state.selectedFile);
+
+      reader.onload = () => {
+        this.setState({ selectedFile: null, hasData: reader.result });
+      };
+
+      reader.onerror = function () {
+        console.log(reader.error);
+      };
+    }
+    else if (this.state.hasData) {
+      return <FileToMatchConverter contents={this.state.hasData} />
     }
   };
 
