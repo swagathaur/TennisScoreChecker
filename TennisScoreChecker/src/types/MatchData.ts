@@ -10,4 +10,8 @@ export class MatchData {
     get totalSets() : number {
         return this.playerX.sets + this.playerY.sets;
     }
+
+    get winner() : PlayerData {
+        return this.playerX.sets > this.playerY.sets ? this.playerX : this.playerY;
+    }
 }

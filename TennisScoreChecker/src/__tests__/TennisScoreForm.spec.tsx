@@ -11,35 +11,35 @@ const { render } = require("@testing-library/react");
 describe('<TennisScoreForm />', () => {
     describe('take match data and display it to a table', () => {
 
-        let getByRole : any;
-        let props = GetDummyData();
+        let getAllByRole : any;
+        let getAllByType : any;
+        let matchData = GetDummyData();
 
         beforeEach(async () => {
-            ({getByRole} = render
+            ({getAllByRole} = render
                 (<TennisScoreForm 
-                    playerX={props.playerX} 
-                    playerY={props.playerY}
-                    totalSets={props.totalSets}/>))
+                    playerX={matchData.playerX} 
+                    playerY={matchData.playerY}
+                    winner={matchData.winner}
+                    totalSets={matchData.totalSets}/>))
         });
 
         it ("Displays both players' matchData", () => {
-            //Check correct player names
-            expect(getByRole('cell', {name : props.playerX.name})).toHaveValue(props.playerX.name);
-            expect(getByRole('cell', {name : props.playerY.name})).toHaveValue(props.playerY.name)
-            
-            //Check correct game counts, for the correct amount of sets
-            for(let x = 0; x < props.totalSets; x++) {                
-                    expect(getByRole('cell', {name : 'gamesCount', key : x, player : props.playerX.name}))
-                        .toContain(props.playerX.gameSets[x]);
-                    expect(getByRole('cell', {name : 'gamesCount', key : x, player : props.playerY.name}))
-                        .toContain(props.playerY.gameSets[x]);
+            //Check that two players were made            
+            let rows = getAllByRole('row');
+            expect(rows.length).toEqual(2);
+
+            //Check that they have different styling (ie; one is a winner)
+            let winner = 0;
+            let loser = 1;
+            if (matchData.playerY.sets > matchData.playerX.sets)
+            {
+                winner = 1;
+                loser = 0;
             }
-                
-            //Check correct setcounts
-            expect(getByRole('cell', {name : 'setCount',  player : props.playerX.name}))
-                        .toContain(props.playerX.sets);
-            expect(getByRole('cell', {name : 'setCount',  player : props.playerY.name}))
-                        .toContain(props.playerY.sets);
+
+            expect(rows[winner]).toHaveClass('winnerTable');
+            expect(rows[loser]).toHaveClass('loserTable');
         });
     });
 });
