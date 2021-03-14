@@ -7,12 +7,8 @@ describe('Uploading a tennis score file', () => {
         cy.fixture('full_tournament.txt').then(fileContent => {
             cy.get('input[type="file"]').attachFile({
                 fileContent: fileContent.toString(),
-                fileName: 'full_tournament',
             });
         });
-
-        //Click the submit button
-        cy.get('[data-testid="fileSubmitButton"]').click();
 
         //Check the match lists length is 2
         cy.get('[data-testid=matchList>li').should('have.length', 2);

@@ -15,3 +15,5 @@ export class MatchData {
         return this.playerX.sets > this.playerY.sets ? this.playerX : this.playerY;
     }
 }
+
+ export default MatchData;
