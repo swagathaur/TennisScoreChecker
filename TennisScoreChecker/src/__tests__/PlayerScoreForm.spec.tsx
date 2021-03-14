@@ -4,7 +4,7 @@ import React from 'react'
 import Chance from 'chance'
 import { MatchData } from "../types/MatchData"
 import { PlayerData } from "../types/Player"
-import PlayerScoreForm from "../PlayerScoreForm"
+import PlayerScoreForm from "../components/PlayerScoreForm"
 
 const { render } = require("@testing-library/react");
 

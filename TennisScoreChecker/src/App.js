@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ConvertTextfileToMatchdata from './types/ConvertTextfileToMatchdata';
-import TennisScoreForm from './TennisScoreForm'
+import FileToMatchConverter from './components/FileToMatchConverter'
 
 class App extends Component {
 
@@ -17,29 +17,7 @@ class App extends Component {
   //Content to display after file change
   fileData = () => {
     if (this.state.selectedFile) {
-      const conversionOutput = ConvertTextfileToMatchdata(this.state.selectedFile);
-
-      let output;
-      if ((typeof conversionOutput === "string")) {
-        output = <h3>{conversionOutput}</h3>;
-      }
-      else {
-        conversionOutput.forEach(match => {
-          output += <TennisScoreForm playerX={match.playerX}
-            playerY={match.playerY}
-            winner={match.winner}
-            totalSets={match.totalSets}
-          />
-        });
-
-      }
-      return (
-        <div>
-          <h2>File Details:</h2>
-          <p>File Name: {this.state.selectedFile.name}</p>
-          {output}
-        </div>
-      );
+      return <FileToMatchConverter blob={this.state.selectedFile}/>
     }
   };
 

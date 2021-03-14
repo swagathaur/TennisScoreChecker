@@ -1,7 +1,7 @@
 import React from "react";
 import PlayerScoreForm from "./PlayerScoreForm";
 
-function TennisScoreForm(props) {
+function MatchScoreForm(props) {
     return (
         <table>
             <tbody>
@@ -18,4 +18,4 @@ function TennisScoreForm(props) {
     )
 }
 
-export default TennisScoreForm;
+export default MatchScoreForm;
