@@ -15,20 +15,20 @@ class App extends Component {
 
   //Content to display after file change
   fileData = () => {
-    if (this.state.selectedFile) {
+    if (this.state.hasData) {
+      return <FileToMatchConverter contents={this.state.hasData} />
+    }
+    else if (this.state.selectedFile) {
       let reader = new FileReader();
       reader.readAsText(this.state.selectedFile);
 
       reader.onload = () => {
-        this.setState({ selectedFile: null, hasData: reader.result });
+        this.setState({ hasData: reader.result });
       };
 
       reader.onerror = function () {
         console.log(reader.error);
       };
-    }
-    else if (this.state.hasData) {
-      return <FileToMatchConverter contents={this.state.hasData} />
     }
   };
 
