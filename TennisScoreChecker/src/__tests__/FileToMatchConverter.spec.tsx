@@ -22,17 +22,4 @@ describe('ConvertTextfileToMatchdata()', () => {
             expect(getAllByRole('row').length).toBeGreaterThanOrEqual(2);
         })
     })
-
-    describe('take guaranteed-valid file and convert to correct data', () => {
-        let result : any;
-
-        beforeEach(async () => {
-            result = ConvertTextfileToMatchdata(file);
-        })
-
-        it("Converts text to match data and displays them,", () => {
-            expect(typeof result).not.toEqual('string');
-            expect(result.length).toBeGreaterThan(0);
-        })
-    })
 })

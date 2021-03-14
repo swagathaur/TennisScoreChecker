@@ -101,9 +101,9 @@ function GetBasicMatchInfo(source: string) {
             continue;
 
         //Assign point based on pulled number
-        if (numbers[0] === '1')
+        if (numbers[0] === '0')
             p1Count++;
-        else if (numbers[0] === '2')
+        else if (numbers[0] === '1')
             p2Count++;
 
         //Check if a player should have taken the set
