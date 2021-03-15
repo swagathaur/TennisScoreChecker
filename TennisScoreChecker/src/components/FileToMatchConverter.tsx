@@ -22,6 +22,9 @@ function FileToMatchConverter(props) {
 }
 
 export default FileToMatchConverter;
+
+//Just to be aware, this is kinda funky because im using string to return error message.  Its bad for typescript.
+//This is purely for time, this should only return MatchData and pass exceptions or something through in a different way.
 function ConvertTextfileToMatchdata(contents: string) {
     let matchData: MatchData[] = [];
 
@@ -70,9 +73,9 @@ function GetBasicMatchInfo(source: string) {
     let ids = ExtractNumbers(lines.shift());
     let id = 'unknownID';
     if (ids.length > 1)
-        console.log("Too many IDs found for match, using id = 0")
+        console.log("Too many IDs found for match, using id = unknownID")
     else if (ids.length === 0)
-        console.log("No IDs found for match, using id = 0")
+        console.log("No IDs found for match, using id = unknownID")
     else
         id = ids[0];
 
