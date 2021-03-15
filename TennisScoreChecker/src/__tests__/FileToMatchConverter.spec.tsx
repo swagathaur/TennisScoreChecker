@@ -1,8 +1,8 @@
 import "@testing-library/jest-dom"
 import "@testing-library/jest-dom/extend-expect"
 import React from 'react'
-import FileToMatchConverter, { ConvertTextfileToMatchdata } from "../components/FileToMatchConverter"
-import { render, within } from "@testing-library/react"
+import FileToMatchConverter from "../components/FileToMatchConverter"
+import { render } from "@testing-library/react"
 import MatchData from "../types/MatchData"
 import { PlayerData } from "../types/PlayerData"
 
@@ -14,8 +14,6 @@ describe('ConvertTextfileToMatchdata()', () => {
     //Display data over multiple matches
     describe('take guaranteed-valid file and display matchdata', () => {
         let getAllByRole: any;
-
-        let result = ConvertTextfileToMatchdata(file);
 
         beforeEach(async () => {
             ({ getAllByRole } = render(<FileToMatchConverter contents={file} />))

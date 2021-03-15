@@ -18,13 +18,13 @@ describe('Uploading a tennis score file', () => {
             //NOTE:: Making an assumption that the display will be correct in both cases if its correct in one, as the component tests should be checking the rest.
             cy.get('table').eq(0).within(() => {
                 //Check that table contains the two player strings
-                cy.get('tr').eq(0).within(() => {
+                cy.get('tr').eq(1).within(() => {
                     cy.get('td').eq(0).should('contain.text', 'Person A');
                     cy.get('td').eq(1).should('contain.text', 6);
                     cy.get('td').eq(2).should('contain.text', 6);
                     cy.get('td').eq(3).should('contain.text', 2);
                 });
-                cy.get('tr').eq(1).within(() => {
+                cy.get('tr').eq(2).within(() => {
                     cy.get('td').eq(0).should('contain.text', 'Person B');
                     cy.get('td').eq(1).should('contain.text', 0);
                     cy.get('td').eq(2).should('contain.text', 0);
