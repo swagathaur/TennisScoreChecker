@@ -18,7 +18,7 @@ function PlayerScoreForm(props) {
         }
     }
     let setDisplay;
-    if (props.player.sets === 2)
+    if (props.player.takenSets === 2)
         setDisplay = <td style={{ backgroundColor: "seagreen" }}> {props.player.takenSets} </td>
     else
         setDisplay = <td style={{ backgroundColor: "sandybrown" }}> {props.player.takenSets} </td>
