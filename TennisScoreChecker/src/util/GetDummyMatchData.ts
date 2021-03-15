@@ -1,6 +1,6 @@
 import MatchData from "../types/MatchData";
 import Chance from 'chance'
-import { PlayerData } from "../types/Player";
+import { PlayerData } from "../types/PlayerData";
 
 //Create the dummy prop data for the test
 function GetDummyMatchData(): MatchData {

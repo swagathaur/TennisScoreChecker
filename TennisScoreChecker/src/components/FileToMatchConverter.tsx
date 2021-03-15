@@ -1,7 +1,7 @@
 import React from 'react'
 import { MatchData } from "../types/MatchData"
 import MatchScoreForm from "../components/MatchScoreForm"
-import { PlayerData } from '../types/Player';
+import { PlayerData } from '../types/PlayerData';
 
 function FileToMatchConverter(props) {
     let conversionOutcome = ConvertTextfileToMatchdata(props.contents);
@@ -25,7 +25,7 @@ export default FileToMatchConverter;
 
 //Just to be aware, this is kinda funky because im using string to return error message.  Its bad for typescript.
 //This is purely for time, this should only return MatchData and pass exceptions or something through in a different way.
-function ConvertTextfileToMatchdata(contents: string) {
+export function ConvertTextfileToMatchdata(contents: string) {
     let matchData: MatchData[] = [];
 
     //Seperate string at each 'Match' keyword
@@ -120,10 +120,10 @@ function GetBasicMatchInfo(source: string) {
             p2Count = 0;
 
             //Assign set
-            winningPlayer.gameSets[setIterator]++;
+            winningPlayer.wonGameCounts[setIterator]++;
 
             //Check if set over
-            if (winningPlayer.gameSets[setIterator] >= 6)
+            if (winningPlayer.wonGameCounts[setIterator] >= 6)
                 setIterator++;
         }
     }

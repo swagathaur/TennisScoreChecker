@@ -22,7 +22,7 @@ describe('<TennisScoreForm />', () => {
         });
 
         it ("Displays both players' matchData", () => {
-            //Check that two players were made            
+            //Check that two players were made, all other tests are made within the player form.         
             let rows = getAllByRole('row');
             expect(rows.length).toEqual(3);
         });

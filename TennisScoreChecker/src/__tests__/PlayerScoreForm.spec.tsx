@@ -6,7 +6,7 @@ import PlayerScoreForm from "../components/PlayerScoreForm"
 
 const { render } = require("@testing-library/react");
 
-describe('<TennisScoreForm />', () => {
+describe('<PlayerScoreForm />', () => {
     describe('take match data and check the displayed contents accuracy', () => {
 
         let getByRole: any;
@@ -30,11 +30,11 @@ describe('<TennisScoreForm />', () => {
 
             //Check correct game counts, for the correct amount of sets
             for (let x = 0; x < matchData.totalSets; x++) {
-                expect(getAllByRole('cell')[x + 1]).toHaveTextContent(player.gameSets[x].toString());
+                expect(getAllByRole('cell')[x + 1]).toHaveTextContent(player.wonGameCounts[x].toString());
             }
 
             //Check correct setcounts
-            expect(getAllByRole('cell')[matchData.totalSets + 1]).toHaveTextContent(player.sets.toString());
+            expect(getAllByRole('cell')[matchData.totalSets + 1]).toHaveTextContent(player.takenSets.toString());
         });
     });
 });

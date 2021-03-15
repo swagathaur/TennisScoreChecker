@@ -1,4 +1,4 @@
-import { PlayerData } from "./Player";
+import { PlayerData } from "./PlayerData";
 
 export class MatchData {
     constructor(public id : string = '00', public playerX : PlayerData = null, public playerY : PlayerData = null) {
@@ -9,11 +9,11 @@ export class MatchData {
 
     //Returns the amount of played sets for this match
     get totalSets() : number {
-        return this.playerX.sets + this.playerY.sets;
+        return this.playerX.takenSets + this.playerY.takenSets;
     }
 
     get winner() : PlayerData {
-        return this.playerX.sets > this.playerY.sets ? this.playerX : this.playerY;
+        return this.playerX.takenSets > this.playerY.takenSets ? this.playerX : this.playerY;
     }
 }
 
