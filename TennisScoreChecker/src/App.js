@@ -40,7 +40,7 @@ class App extends Component {
         <h2>About this program.</h2>
         <p>
           This program accepts text files in the format listed
-          <a href='https://github.com/swagathaur/TennistScoreChecker'> here</a>
+          <a href='https://github.com/swagathaur/TennissScoreChecker'> here</a>
           . It then parses that data into an easy-to-use format, and displays the results.
           </p>
         <h2>Upload a File</h2>
